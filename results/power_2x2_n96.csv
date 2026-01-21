@@ -1,0 +1,2 @@
+"analysis_type","n_subj","n_sims","n_converged","convergence_rate","power_phon","power_sem","power_interaction","power_valence","runtime_minutes","timestamp"
+"2x2",96,1000,1000,1,0.974,0.065,0.045,NA,295.748339251677,"2026-01-15 15:10:22"
