@@ -1,0 +1,12 @@
+
+> @tmpsych/plugin-html-audio-key-calibration@0.0.1 build
+> rollup --config
+
+[36m
+[1msrc/index.ts[22m → [1mdist/index.js, dist/index.cjs, dist/index.browser.js[22m...[39m
+[32mcreated [1mdist/index.js, dist/index.cjs, dist/index.browser.js[22m in [1m1.3s[22m[39m
+[36m
+[1msrc/index.ts[22m → [1mdist/index.browser.min.js[22m...[39m
+(node:71363) [DEP0180] DeprecationWarning: fs.Stats constructor is deprecated.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+[32mcreated [1mdist/index.browser.min.js[22m in [1m3.1s[22m[39m
