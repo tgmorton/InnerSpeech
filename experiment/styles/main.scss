@@ -1,5 +1,428 @@
 @import "~jspsych/css/jspsych.css";
 
+// Base styles
 .jspsych-display-element {
   background-color: #ffffff;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+// Common container for all screens
+.screen-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+// Consent form
+.consent-form {
+  max-width: 80ch;
+  margin: 0 auto;
+  padding: 30px 40px;
+  text-align: left;
+
+  h2 {
+    font-size: 1.6em;
+    font-weight: 600;
+    margin-bottom: 25px;
+    color: #1a1a1a;
+    text-align: center;
+  }
+
+  p {
+    font-size: 1em;
+    margin-bottom: 15px;
+    color: #333;
+    line-height: 1.7;
+  }
+}
+
+// Welcome screen
+.welcome-screen {
+  text-align: center;
+  padding: 60px 40px;
+
+  h1 {
+    font-size: 2.8em;
+    font-weight: 600;
+    margin-bottom: 40px;
+    color: #1a1a1a;
+  }
+
+  p {
+    font-size: 1.3em;
+    margin-bottom: 20px;
+    color: #333;
+  }
+
+  .continue-prompt {
+    margin-top: 50px;
+    font-size: 1.1em;
+    color: #666;
+    font-style: italic;
+  }
+}
+
+// Instruction screens - clean, readable formatting
+.instruction-screen {
+  max-width: 750px;
+  margin: 0 auto;
+  padding: 30px 40px;
+  text-align: left;
+
+  h2 {
+    font-size: 1.8em;
+    font-weight: 600;
+    margin-bottom: 30px;
+    color: #1a1a1a;
+    text-align: center;
+    border-bottom: 2px solid #e0e0e0;
+    padding-bottom: 15px;
+  }
+
+  p {
+    font-size: 1.15em;
+    margin-bottom: 18px;
+    color: #333;
+  }
+
+  .instruction-box {
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    padding: 25px 30px;
+    margin: 25px 0;
+
+    p {
+      margin-bottom: 12px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  .important-box {
+    background-color: #fff3cd;
+    border: 1px solid #ffc107;
+    border-left: 4px solid #ffc107;
+    border-radius: 4px;
+    padding: 20px 25px;
+    margin: 25px 0;
+
+    strong {
+      color: #856404;
+    }
+  }
+
+  .trial-type-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+    margin: 25px 0;
+  }
+
+  .trial-type-item {
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 6px;
+    padding: 15px 20px;
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+
+    .trial-label {
+      font-weight: 600;
+      color: #495057;
+      min-width: 140px;
+    }
+
+    .trial-action {
+      color: #333;
+    }
+
+    &.go-action {
+      border-left: 4px solid #28a745;
+    }
+
+    &.stop-action {
+      border-left: 4px solid #dc3545;
+    }
+  }
+
+  .summary-list {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+
+    li {
+      padding: 12px 0;
+      border-bottom: 1px solid #eee;
+      font-size: 1.1em;
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      &::before {
+        content: "→ ";
+        color: #007bff;
+        font-weight: bold;
+      }
+    }
+  }
+
+  .continue-prompt {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 1em;
+    color: #666;
+    font-style: italic;
+  }
+}
+
+// Fullscreen prompt
+.fullscreen-prompt {
+  text-align: center;
+  padding: 40px;
+
+  p {
+    font-size: 1.2em;
+    margin-bottom: 15px;
+    color: #333;
+  }
+}
+
+// Break screen
+.break-screen {
+  text-align: center;
+  padding: 60px 40px;
+
+  h2 {
+    font-size: 2em;
+    margin-bottom: 30px;
+    color: #1a1a1a;
+  }
+
+  p {
+    font-size: 1.2em;
+    margin-bottom: 15px;
+    color: #333;
+  }
+
+  .continue-prompt {
+    margin-top: 40px;
+    font-size: 1.1em;
+    color: #666;
+    font-style: italic;
+  }
+}
+
+// Debrief screen
+.debrief-screen {
+  text-align: center;
+  padding: 60px 40px;
+
+  h2 {
+    font-size: 2.2em;
+    margin-bottom: 30px;
+    color: #1a1a1a;
+  }
+
+  p {
+    font-size: 1.2em;
+    margin-bottom: 15px;
+    color: #333;
+  }
+
+  .participant-id {
+    font-family: monospace;
+    background-color: #f0f0f0;
+    padding: 8px 16px;
+    border-radius: 4px;
+    display: inline-block;
+    margin-top: 10px;
+  }
+}
+
+// Familiarization trials
+.familiarization-trial {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 450px;
+  text-align: center;
+
+  .familiarization-image {
+    max-height: 300px;
+    width: auto;
+  }
+
+  .picture-label {
+    font-size: 2.5em;
+    font-weight: bold;
+    margin-top: 25px;
+    color: #1a1a1a;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+
+  .continue-prompt {
+    margin-top: 30px;
+    font-size: 1em;
+    color: #888;
+    font-style: italic;
+  }
+}
+
+// Practice feedback trial
+.practice-feedback {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  text-align: center;
+
+  .correct-answer {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: #1a1a1a;
+    margin-bottom: 30px;
+
+    span {
+      text-transform: uppercase;
+      color: #007bff;
+    }
+  }
+
+  .feedback-question {
+    font-size: 1.3em;
+    color: #333;
+    margin-bottom: 25px;
+  }
+
+  .feedback-keys {
+    font-size: 1.1em;
+    color: #666;
+
+    .key {
+      display: inline-block;
+      background-color: #f0f0f0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      padding: 5px 12px;
+      margin: 0 5px;
+      font-family: monospace;
+      font-weight: bold;
+    }
+  }
+}
+
+// Trial number display
+.trial-number {
+  font-size: 1.4em;
+  color: #888;
+  text-align: center;
+  padding: 30px;
+}
+
+// Fixation cross
+.fixation {
+  font-size: 5em;
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+  line-height: 300px;
+}
+
+// Stop-signal trial styles
+.stop-signal-trial {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 450px;
+
+  .picture-container {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .trial-picture {
+    max-height: 300px;
+    width: auto;
+  }
+
+  // Word overlay - RED TEXT with BLACK BORDER
+  .word-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 2.2em;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #cc0000;
+    background-color: #fff;
+    padding: 12px 24px;
+    border: 3px solid #000;
+    border-radius: 4px;
+    white-space: nowrap;
+    visibility: hidden;
+    z-index: 10;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+
+    &.visible {
+      visibility: visible;
+    }
+  }
+}
+
+// Image keyboard response plugin image styling
+.jspsych-image-keyboard-response-stimulus {
+  max-height: 300px;
+  width: auto;
+}
+
+// Progress bar customization
+#jspsych-loading-progress-bar-container {
+  max-width: 400px;
+  margin: 0 auto;
+
+  #jspsych-loading-progress-bar {
+    background-color: #007bff;
+  }
+}
+
+// Fullscreen button
+.jspsych-btn {
+  font-size: 1.1em;
+  padding: 14px 35px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 25px;
+  font-weight: 500;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: #0056b3;
+  }
+}
+
+// Page indicator
+.page-indicator {
+  font-size: 0.9em;
+  color: #888;
+  text-align: center;
+  margin-bottom: 20px;
 }
