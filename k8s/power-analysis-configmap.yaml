@@ -1,0 +1,433 @@
+# ConfigMap containing the R worker script
+# Cleaner than embedding in job YAML, easier to maintain
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: power-analysis-scripts
+  namespace: lemn-lab
+  labels:
+    project: inner-speech-power-analysis
+    owner: thomas
+data:
+  worker.R: |
+    #!/usr/bin/env Rscript
+    # =============================================================================
+    # Power Analysis Worker Script for K8s Indexed Jobs
+    # OPTIMIZED: Vectorized data generation + parallel processing
+    # =============================================================================
+
+    # Get job parameters from environment
+    job_index <- as.integer(Sys.getenv("JOB_COMPLETION_INDEX", "0"))
+    n_sims <- as.integer(Sys.getenv("N_SIMS", "1000"))
+    output_dir <- Sys.getenv("OUTPUT_DIR", "/results")
+
+    cat("==============================================\n")
+    cat("Power Analysis Worker (OPTIMIZED)\n")
+    cat("==============================================\n")
+    cat("Job index:", job_index, "\n")
+    cat("N simulations:", n_sims, "\n")
+    cat("Output dir:", output_dir, "\n")
+    cat("R version:", R.version.string, "\n")
+
+    # Load packages
+    suppressPackageStartupMessages({
+      library(lme4)
+      library(lmerTest)
+      library(parallel)
+    })
+
+    # Use cores from env var (set in k8s job to match resource request)
+    N_CORES <- as.integer(Sys.getenv("N_CORES", "2"))
+    cat("Using cores:", N_CORES, "\n")
+    cat("lme4 version:", as.character(packageVersion("lme4")), "\n")
+
+    set.seed(42 + job_index)
+
+    # =============================================================================
+    # JOB INDEX MAPPING
+    # =============================================================================
+    sample_sizes <- c(30, 48, 60, 72, 84, 96)
+
+    if (job_index < 6) {
+      analysis_type <- "2x2"
+      n_subj <- sample_sizes[job_index + 1]
+    } else {
+      analysis_type <- "valence"
+      n_subj <- sample_sizes[job_index - 6 + 1]
+    }
+
+    cat("Analysis type:", analysis_type, "\n")
+    cat("Sample size:", n_subj, "\n")
+    cat("==============================================\n\n")
+
+    # Check if results already exist - skip if so
+    output_file <- file.path(output_dir, sprintf("power_%s_n%d.csv", analysis_type, n_subj))
+    if (file.exists(output_file)) {
+      cat("Results already exist at:", output_file, "\n")
+      cat("Skipping this job.\n")
+      quit(status = 0)
+    }
+
+    # =============================================================================
+    # EFFECT SIZES FROM SLEVC & FERREIRA (2006)
+    # =============================================================================
+    exp2_n <- 48
+    exp2_phon_dissim_mean <- 37.2
+    exp2_phon_sim_mean <- 32.2
+    exp2_phon_ci_halfwidth <- 3.7
+    exp2_sem_dissim_mean <- 34.8
+    exp2_sem_sim_mean <- 34.5
+
+    exp5_neutral_mean <- 58.8
+    exp5_valent_mean <- 65.2
+    exp5_valence_ci_halfwidth <- 4.4
+
+    calc_effect_size <- function(mean_diff, ci_halfwidth, n, df = n - 1) {
+      t_crit <- qt(0.975, df = df)
+      se <- ci_halfwidth / t_crit
+      sd_diff <- se * sqrt(n)
+      return(list(mean_diff = mean_diff, sd_diff = sd_diff))
+    }
+
+    phon_mean_diff <- exp2_phon_dissim_mean - exp2_phon_sim_mean
+    phon_effect <- calc_effect_size(phon_mean_diff, exp2_phon_ci_halfwidth, exp2_n)
+    sem_mean_diff <- exp2_sem_dissim_mean - exp2_sem_sim_mean
+    valence_mean_diff <- exp5_valent_mean - exp5_neutral_mean
+    valence_effect <- calc_effect_size(valence_mean_diff, exp5_valence_ci_halfwidth, exp2_n)
+
+    # Simulation parameters (conservative 80% of S&F 2006)
+    CONSERVATIVE_FACTOR <- 0.80
+    grand_mean <- mean(c(exp2_phon_dissim_mean, exp2_phon_sim_mean,
+                         exp2_sem_dissim_mean, exp2_sem_sim_mean)) / 100
+    phon_effect_size <- (-phon_mean_diff / 100) * CONSERVATIVE_FACTOR
+    sem_effect_size <- sem_mean_diff / 100
+    valence_grand_mean <- mean(c(exp5_neutral_mean, exp5_valent_mean)) / 100
+    valence_effect_size <- (valence_mean_diff / 100) * CONSERVATIVE_FACTOR
+
+    # Random effects variances
+    total_sd <- phon_effect$sd_diff / 100
+    icc_subject <- 0.20
+    icc_item <- 0.10
+    tau_subj <- sqrt(icc_subject) * total_sd
+    tau_item <- sqrt(icc_item) * total_sd
+    sigma <- sqrt(1 - icc_subject - icc_item) * total_sd
+    tau_subj_phon <- abs(phon_effect_size) * 0.5
+    tau_subj_sem <- abs(phon_effect_size) * 0.5
+    tau_item_phon <- abs(phon_effect_size) * 0.25
+    tau_item_sem <- abs(phon_effect_size) * 0.25
+
+    cat("Effect sizes (conservative 80%):\n")
+    cat("  Phonological:", round(phon_effect_size, 4), "\n")
+    cat("  Valence:", round(valence_effect_size, 4), "\n")
+    cat("Variance parameters:\n")
+    cat("  tau_subj:", round(tau_subj, 4), "| tau_item:", round(tau_item, 4), "| sigma:", round(sigma, 4), "\n\n")
+
+    # =============================================================================
+    # VECTORIZED DATA SIMULATION (FAST!)
+    # =============================================================================
+
+    simulate_2x2_data <- function(n_subj, n_items_per_cell = 18) {
+      n_total_items <- n_items_per_cell * 4
+      n_obs <- n_subj * n_total_items
+
+      # Pre-generate ALL random effects at once (vectorized)
+      u0 <- rnorm(n_subj, 0, tau_subj)
+      u_phon <- rnorm(n_subj, 0, tau_subj_phon)
+      u_sem <- rnorm(n_subj, 0, tau_subj_sem)
+      w0 <- rnorm(n_total_items, 0, tau_item)
+      w_phon <- rnorm(n_total_items, 0, tau_item_phon)
+      w_sem <- rnorm(n_total_items, 0, tau_item_sem)
+
+      # Create full design matrix (vectorized)
+      subject <- rep(1:n_subj, times = n_total_items)
+      item <- rep(1:n_total_items, each = n_subj)
+
+      # Assign conditions to items (items 1-18 = cond1, 19-36 = cond2, etc.)
+      item_cond <- ceiling(item / n_items_per_cell)
+      phon <- c(-0.5, 0.5, -0.5, 0.5)[item_cond]
+      sem <- c(-0.5, -0.5, 0.5, 0.5)[item_cond]
+
+      # Calculate linear predictor (FULLY VECTORIZED - no loops!)
+      eta <- grand_mean +
+        (phon_effect_size + u_phon[subject] + w_phon[item]) * phon +
+        (sem_effect_size + u_sem[subject] + w_sem[item]) * sem +
+        u0[subject] + w0[item] +
+        rnorm(n_obs, 0, sigma)
+
+      data.frame(
+        subject = factor(subject),
+        item = factor(item),
+        phon = phon,
+        sem = sem,
+        prop_halt = pmax(0, pmin(1, eta))
+      )
+    }
+
+    simulate_valence_data <- function(n_subj, n_items_per_level = 18) {
+      tau_s_val <- abs(valence_effect_size) * 0.5
+      tau_i_val <- abs(valence_effect_size) * 0.25
+
+      n_total_items <- n_items_per_level * 2
+      n_obs <- n_subj * n_total_items
+
+      # Pre-generate ALL random effects (vectorized)
+      u0 <- rnorm(n_subj, 0, tau_subj)
+      u_val <- rnorm(n_subj, 0, tau_s_val)
+      w0 <- rnorm(n_total_items, 0, tau_item)
+      w_val <- rnorm(n_total_items, 0, tau_i_val)
+
+      # Create full design (vectorized)
+      subject <- rep(1:n_subj, times = n_total_items)
+      item <- rep(1:n_total_items, each = n_subj)
+      valence <- ifelse(item <= n_items_per_level, -0.5, 0.5)
+
+      # Calculate linear predictor (FULLY VECTORIZED)
+      eta <- valence_grand_mean +
+        (valence_effect_size + u_val[subject] + w_val[item]) * valence +
+        u0[subject] + w0[item] +
+        rnorm(n_obs, 0, sigma)
+
+      data.frame(
+        subject = factor(subject),
+        item = factor(item),
+        valence = valence,
+        prop_halt = pmax(0, pmin(1, eta))
+      )
+    }
+
+    # =============================================================================
+    # OPTIMIZED MODEL FITTING
+    # =============================================================================
+
+    # Fast lmerControl: nloptwrap is fastest, reduce iterations for power analysis
+    fast_control <- lmerControl(
+      optimizer = "nloptwrap",
+      calc.derivs = FALSE,  # Skip Hessian - not needed for p-values
+      optCtrl = list(maxeval = 1000)  # Fewer iterations - good enough for power
+    )
+
+    fallback_control <- lmerControl(
+      optimizer = "bobyqa",
+      calc.derivs = FALSE,
+      optCtrl = list(maxfun = 10000)
+    )
+
+    run_single_sim_2x2 <- function(i) {
+      dat <- simulate_2x2_data(n_subj)
+
+      tryCatch({
+        model <- suppressMessages(suppressWarnings(
+          lmer(prop_halt ~ phon * sem + (1 + phon + sem | subject) + (1 + phon + sem | item),
+               data = dat, control = fast_control)
+        ))
+        coef_table <- summary(model)$coefficients
+        return(data.frame(
+          p_phon = coef_table["phon", "Pr(>|t|)"],
+          p_sem = coef_table["sem", "Pr(>|t|)"],
+          p_interaction = coef_table["phon:sem", "Pr(>|t|)"],
+          converged = TRUE
+        ))
+      }, error = function(e) {
+        # Fallback: simpler random effects
+        tryCatch({
+          model <- suppressMessages(suppressWarnings(
+            lmer(prop_halt ~ phon * sem + (1 + phon + sem | subject) + (1 | item),
+                 data = dat, control = fallback_control)
+          ))
+          coef_table <- summary(model)$coefficients
+          return(data.frame(
+            p_phon = coef_table["phon", "Pr(>|t|)"],
+            p_sem = coef_table["sem", "Pr(>|t|)"],
+            p_interaction = coef_table["phon:sem", "Pr(>|t|)"],
+            converged = TRUE
+          ))
+        }, error = function(e2) {
+          return(data.frame(p_phon = NA, p_sem = NA, p_interaction = NA, converged = FALSE))
+        })
+      })
+    }
+
+    run_single_sim_valence <- function(i) {
+      dat <- simulate_valence_data(n_subj)
+
+      tryCatch({
+        model <- suppressMessages(suppressWarnings(
+          lmer(prop_halt ~ valence + (1 + valence | subject) + (1 + valence | item),
+               data = dat, control = fast_control)
+        ))
+        coef_table <- summary(model)$coefficients
+        return(data.frame(p_valence = coef_table["valence", "Pr(>|t|)"], converged = TRUE))
+      }, error = function(e) {
+        tryCatch({
+          model <- suppressMessages(suppressWarnings(
+            lmer(prop_halt ~ valence + (1 + valence | subject) + (1 | item),
+                 data = dat, control = fallback_control)
+          ))
+          coef_table <- summary(model)$coefficients
+          return(data.frame(p_valence = coef_table["valence", "Pr(>|t|)"], converged = TRUE))
+        }, error = function(e2) {
+          return(data.frame(p_valence = NA, converged = FALSE))
+        })
+      })
+    }
+
+    # =============================================================================
+    # RUN SIMULATIONS IN PARALLEL
+    # =============================================================================
+
+    cat("Starting", n_sims, "simulations using", N_CORES, "cores...\n")
+    start_time <- Sys.time()
+
+    chunk_size <- max(1, ceiling(n_sims / 50))
+    cat("Progress chunk size:", chunk_size, "sims\n")
+
+    sim_indices <- 1:n_sims
+    sim_chunks <- split(sim_indices, ceiling(seq_along(sim_indices) / chunk_size))
+    results_list <- list()
+    completed <- 0
+
+    for (chunk in sim_chunks) {
+      if (analysis_type == "2x2") {
+        chunk_results <- mclapply(chunk, run_single_sim_2x2,
+                                  mc.cores = N_CORES, mc.set.seed = TRUE)
+      } else {
+        chunk_results <- mclapply(chunk, run_single_sim_valence,
+                                  mc.cores = N_CORES, mc.set.seed = TRUE)
+      }
+
+      results_list <- c(results_list, chunk_results)
+      completed <- completed + length(chunk)
+      elapsed_min <- as.numeric(difftime(Sys.time(), start_time, units = "mins"))
+      cat(sprintf("Completed %d/%d sims (%.1f%%) in %.1f min\n",
+                  completed, n_sims, 100 * completed / n_sims, elapsed_min))
+    }
+
+    # Combine results
+    results_df <- do.call(rbind, results_list)
+    elapsed_total <- as.numeric(difftime(Sys.time(), start_time, units = "mins"))
+    cat(sprintf("\nCompleted %d simulations in %.1f minutes (%.2f sec/sim)\n",
+                n_sims, elapsed_total, elapsed_total * 60 / n_sims))
+
+    # =============================================================================
+    # CALCULATE AND SAVE RESULTS
+    # =============================================================================
+
+    alpha <- 0.05
+    converged <- results_df[results_df$converged == TRUE, ]
+    n_converged <- nrow(converged)
+    convergence_rate <- n_converged / n_sims
+
+    if (analysis_type == "2x2") {
+      power_phon <- mean(converged$p_phon < alpha, na.rm = TRUE)
+      power_sem <- mean(converged$p_sem < alpha, na.rm = TRUE)
+      power_int <- mean(converged$p_interaction < alpha, na.rm = TRUE)
+
+      summary_row <- data.frame(
+        analysis_type = analysis_type,
+        n_subj = n_subj,
+        n_sims = n_sims,
+        n_converged = n_converged,
+        convergence_rate = convergence_rate,
+        power_phon = power_phon,
+        power_sem = power_sem,
+        power_interaction = power_int,
+        power_valence = NA,
+        runtime_minutes = elapsed_total,
+        timestamp = format(Sys.time(), "%Y-%m-%d %H:%M:%S")
+      )
+
+      cat("\n==============================================\n")
+      cat("RESULTS for N =", n_subj, "(2x2 design)\n")
+      cat("==============================================\n")
+      cat("  Converged:", n_converged, "/", n_sims, "(", round(100 * convergence_rate, 1), "%)\n")
+      cat("  Power (Phonological):", round(power_phon * 100, 1), "%\n")
+      cat("  Power (Semantic):", round(power_sem * 100, 1), "%\n")
+      cat("  Power (Interaction):", round(power_int * 100, 1), "%\n")
+    } else {
+      power_val <- mean(converged$p_valence < alpha, na.rm = TRUE)
+
+      summary_row <- data.frame(
+        analysis_type = analysis_type,
+        n_subj = n_subj,
+        n_sims = n_sims,
+        n_converged = n_converged,
+        convergence_rate = convergence_rate,
+        power_phon = NA,
+        power_sem = NA,
+        power_interaction = NA,
+        power_valence = power_val,
+        runtime_minutes = elapsed_total,
+        timestamp = format(Sys.time(), "%Y-%m-%d %H:%M:%S")
+      )
+
+      cat("\n==============================================\n")
+      cat("RESULTS for N =", n_subj, "(valence design)\n")
+      cat("==============================================\n")
+      cat("  Converged:", n_converged, "/", n_sims, "(", round(100 * convergence_rate, 1), "%)\n")
+      cat("  Power (Valence):", round(power_val * 100, 1), "%\n")
+    }
+
+    # Save results
+    write.csv(summary_row, output_file, row.names = FALSE)
+    cat("\nSummary saved to:", output_file, "\n")
+
+    raw_output_file <- file.path(output_dir, sprintf("raw_%s_n%d.rds", analysis_type, n_subj))
+    saveRDS(results_df, raw_output_file)
+    cat("Raw results saved to:", raw_output_file, "\n")
+
+    cat("\n==============================================\n")
+    cat("Job", job_index, "complete!\n")
+    cat("==============================================\n")
+
+  aggregate.R: |
+    #!/usr/bin/env Rscript
+    # =============================================================================
+    # Aggregate power analysis results from all K8s jobs
+    # =============================================================================
+
+    results_dir <- commandArgs(trailingOnly = TRUE)[1]
+    if (is.na(results_dir)) results_dir <- "/results"
+
+    cat("==============================================\n")
+    cat("Aggregating Power Analysis Results\n")
+    cat("==============================================\n")
+    cat("Results directory:", results_dir, "\n\n")
+
+    files <- list.files(results_dir, pattern = "^power_.*\\.csv$", full.names = TRUE)
+    cat("Found", length(files), "result files\n")
+
+    if (length(files) == 0) {
+      cat("ERROR: No result files found!\n")
+      quit(status = 1)
+    }
+
+    all_results <- do.call(rbind, lapply(files, read.csv))
+
+    results_2x2 <- all_results[all_results$analysis_type == "2x2", ]
+    results_2x2 <- results_2x2[order(results_2x2$n_subj), ]
+
+    results_val <- all_results[all_results$analysis_type == "valence", ]
+    results_val <- results_val[order(results_val$n_subj), ]
+
+    cat("\n==============================================\n")
+    cat("2x2 DESIGN (Phonological x Semantic)\n")
+    cat("==============================================\n")
+    print(results_2x2[, c("n_subj", "convergence_rate", "power_phon", "power_sem", "power_interaction")])
+
+    cat("\n==============================================\n")
+    cat("VALENCE DESIGN\n")
+    cat("==============================================\n")
+    print(results_val[, c("n_subj", "convergence_rate", "power_valence")])
+
+    min_n_phon <- results_2x2$n_subj[which(results_2x2$power_phon >= 0.80)[1]]
+    min_n_val <- results_val$n_subj[which(results_val$power_valence >= 0.80)[1]]
+
+    cat("\n==============================================\n")
+    cat("SAMPLE SIZE RECOMMENDATIONS\n")
+    cat("==============================================\n")
+    cat("Minimum N for 80% power (Phonological):", ifelse(is.na(min_n_phon), ">96", min_n_phon), "\n")
+    cat("Minimum N for 80% power (Valence):", ifelse(is.na(min_n_val), ">96", min_n_val), "\n")
+
+    combined_file <- file.path(results_dir, "power_analysis_combined.csv")
+    write.csv(all_results, combined_file, row.names = FALSE)
+    cat("\nCombined results saved to:", combined_file, "\n")

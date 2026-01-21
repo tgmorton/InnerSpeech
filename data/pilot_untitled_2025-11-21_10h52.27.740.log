@@ -1,0 +1,280 @@
+20.6642 	WARNING 	Font Manager failed to load file /System/Library/PrivateFrameworks/FontServices.framework/Resources/Reserved/PingFangUI.ttc
+20.7397 	WARNING 	Font Manager failed to load file /System/Library/PrivateFrameworks/FontServices.framework/Resources/Reserved/PingFangUI.ttc
+22.9141 	DEBUG 	Fullscreen settings ignored as running in pilot mode.
+22.9156 	INFO 	Loaded monitor calibration from ['2025_11_21 10:13']
+23.0829 	INFO 	Using renderer 'Apple M1 Max' for graphics
+23.0829 	INFO 	OpenGL version supported by driver is 2..
+23.1173 	EXP 	Created window1 = Window(allowGUI=False, allowStencil=False, autoLog=True, backendConf=UNKNOWN, backgroundFit=<method-wrapper '__getattribute__' of attributeSetter object at 0x1572fd7e0>, backgroundImage=<method-wrapper '__getattribute__' of attributeSetter object at 0x1572fd780>, bitsMode=UNKNOWN, blendMode='avg', bpc=(8, 8, 8), color=array([0., 0., 0.]), colorSpace='rgb', depthBits=8, fullscr=False, gamma=None, gammaErrorPolicy='raise', infoMsg=UNKNOWN, lms=UNKNOWN, monitor=<psychopy.monitors.calibTools.Monitor object at 0x1571683a0>, multiSample=False, name='window1', numSamples=2, pos=[np.float64(356.0), np.float64(191.0)], screen=0, size=array([1600, 1200]), stencilBits=0, stereo=False, title='PsychoPy', units='height', useFBO=True, useRetina=True, viewOri=0.0, viewPos=None, viewScale=None, waitBlanking=True, winType='pyglet')
+23.1174 	EXP 	window1: backgroundImage = ''
+23.1174 	EXP 	window1: backgroundFit = 'none'
+23.1388 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+23.1514 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+23.1640 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+23.1768 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+23.1896 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+23.2019 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+23.2145 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+23.2273 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+23.2396 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+23.2519 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+23.2653 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+23.2783 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+23.2912 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+23.3043 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+23.3170 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+23.3299 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+23.3427 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+23.3553 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+23.3678 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+23.3807 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+23.3930 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+23.3934 	DEBUG 	Uploading Texture Font fontname to graphics card
+23.3974 	DEBUG 	Upload of Texture Font fontname complete
+23.4160 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+23.4288 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+23.4415 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+23.4416 	DEBUG 	Uploading Texture Font fontname to graphics card
+23.4437 	DEBUG 	Upload of Texture Font fontname complete
+23.4451 	EXP 	window1: Attempting to measure frame rate of screen (0) ...
+23.4451 	EXP 	window1: recordFrameIntervals = False
+23.5938 	EXP 	window1: recordFrameIntervals = True
+24.3445 	WARNING 	t of last frame was 20.93ms (=1/47)
+24.4521 	WARNING 	Couldn't measure a consistent frame rate!
+  - Is your graphics card set to sync to vertical blank?
+  - Are you running other processes on your computer?
+
+24.4735 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+24.4868 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+24.5001 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+24.5136 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+24.5271 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+24.5405 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+24.5534 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+24.5668 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+24.5805 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+24.5938 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+24.5942 	DEBUG 	Uploading Texture Font fontname to graphics card
+24.5966 	DEBUG 	Upload of Texture Font fontname complete
+25.1443 	INFO 	keyboard.Keyboard is using ptb backend.
+25.2229 	INFO 	keyboard.Keyboard is using ptb backend.
+25.3004 	INFO 	keyboard.Keyboard is using ptb backend.
+25.3004 	EXP 	untitled: status = STARTED
+25.3245 	EXP 	Created image = ImageStim(__class__=<class 'psychopy.visual.image.ImageStim'>, anchor=('center', 'center'), autoLog=True, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=0.0, draggable=False, flipHoriz=np.False_, flipVert=np.False_, image='default.png', interpolate=True, mask=None, maskParams=None, name='image', opacity=1, ori=0.0, pos=array([0., 0.]), size=array([0.42666667, 0.42666667]), texRes=128.0, units='height', win=Window(...))
+25.3288 	EXP 	Created signal_text = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoDraw=False, autoLog=True, bold=False, color=array([ 1., -1., -1.]), colorSpace='rgb', contrast=1.0, depth=-1.0, draggable=False, flipHoriz=False, flipVert=False, font='Arial', fontFiles=[], height=0.05, italic=False, languageStyle='LTR', name='signal_text', opacity=1, ori=0.0, pos=array([0., 0.]), rgb=UNKNOWN, text='', units='height', win=Window(...), wrapWidth=1)
+25.3460 	EXP 	Created text = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoDraw=False, autoLog=True, bold=False, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=-2.0, draggable=False, flipHoriz=False, flipVert=False, font='Arial', fontFiles=[], height=np.float64(0.05), italic=False, languageStyle='LTR', name='text', opacity=1, ori=0.0, pos=array([0., 0.]), rgb=UNKNOWN, text='1', units='height', win=Window(...), wrapWidth=1)
+25.3481 	EXP 	Created text_2 = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoDraw=False, autoLog=True, bold=False, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=-3.0, draggable=False, flipHoriz=False, flipVert=False, font='Arial', fontFiles=[], height=np.float64(0.1), italic=False, languageStyle='LTR', name='text_2', opacity=1, ori=0.0, pos=array([0., 0.]), rgb=UNKNOWN, text='+', units='height', win=Window(...), wrapWidth=1)
+25.3546 	EXP 	Created continue_text = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoDraw=False, autoLog=True, bold=False, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=-1.0, draggable=False, flipHoriz=False, flipVert=False, font='Arial', fontFiles=[], height=np.float64(0.05), italic=False, languageStyle='LTR', name='continue_text', opacity=1, ori=0.0, pos=array([0., 0.]), rgb=UNKNOWN, text="Press 'f' to continue", units='height', win=Window(...), wrapWidth=1)
+0.0155 	DEBUG 	Read csv file with pandas: AlliesItemList - Test.csv
+0.0165 	DEBUG 	Clearing unnamed columns from AlliesItemList - Test.csv
+0.0176 	EXP 	Imported AlliesItemList - Test.csv as conditions, 24 conditions, 9 params
+0.0182 	EXP 	New trial (rep=0, index=0): <Trial 0 (0 in rep 0) data={'group_id': np.int64(8), 'item_id': np.int64(8), 'block': 'go', 'item': 'basket', 'signal': None, 'sem_relatedness': 'none', 'phon_relatedness': 'none', 'path': 'images/020 .bmp', 'image_file': '020 .bmp', 'thisN': 0, 'thisTrialN': 0, 'thisRepN': 0}>
+0.0257 	WARNING 	t of last frame was 20.29ms (=1/49)
+0.0257 	EXP 	image: image = 'images/020 .bmp'
+0.0257 	EXP 	signal_text: height = np.float64(0.05)
+0.0257 	EXP 	signal_text: height = np.float64(0.05)
+0.0257 	EXP 	signal_text: height = np.float64(0.05)
+0.0257 	EXP 	signal_text: text = ''
+0.0257 	EXP 	text: autoDraw = True
+0.4972 	EXP 	text_2: autoDraw = True
+0.5138 	EXP 	text: autoDraw = False
+0.9933 	EXP 	text_2: autoDraw = False
+0.9978 	INFO 	Keyboard events cleared
+0.9978 	EXP 	image: autoDraw = True
+1.3901 	EXP 	signal_text: autoDraw = True
+2.9889 	INFO 	Keyboard events cleared
+2.9889 	EXP 	image: autoDraw = False
+2.9889 	EXP 	signal_text: autoDraw = False
+2.9889 	EXP 	image: autoDraw = False
+2.9889 	EXP 	signal_text: autoDraw = False
+2.9889 	EXP 	text: autoDraw = False
+2.9889 	EXP 	text_2: autoDraw = False
+2.9889 	EXP 	continue_text: autoDraw = True
+3.3039 	EXP 	Device response: <KeyPress from None: t=3.135036666004453, value=space, duration=None>
+3.3041 	EXP 	Device response: <KeyPress from None: t=3.135036666004453, value=space, duration=0.14795204199617729>
+3.3214 	DATA 	Keypress: space
+3.3247 	WARNING 	t of last frame was 189.74ms (=1/5)
+3.9816 	EXP 	continue_text: autoDraw = False
+7.7519 	WARNING 	t of last frame was 20.36ms (=1/49)
+8.5640 	EXP 	Device response: <KeyPress from None: t=8.557081083010416, value=f, duration=None>
+8.5643 	EXP 	New trial (rep=0, index=1): <Trial 1 (1 in rep 0) data={'group_id': np.int64(11), 'item_id': np.int64(11), 'block': 'go', 'item': 'basket', 'signal': None, 'sem_relatedness': 'none', 'phon_relatedness': 'none', 'path': 'images/020 .bmp', 'image_file': '020 .bmp', 'thisN': 1, 'thisTrialN': 1, 'thisRepN': 0}>
+8.5713 	DATA 	Keypress: f
+8.5738 	EXP 	continue_text: autoDraw = False
+8.5738 	EXP 	image: image = 'images/020 .bmp'
+8.5738 	EXP 	signal_text: height = np.float64(0.05)
+8.5738 	EXP 	signal_text: height = np.float64(0.05)
+8.5738 	EXP 	signal_text: height = np.float64(0.05)
+8.5738 	EXP 	signal_text: text = ''
+8.5738 	EXP 	text: autoDraw = True
+8.6789 	EXP 	Device response: <KeyPress from None: t=8.557081083010416, value=f, duration=0.11966037499951199>
+9.0553 	EXP 	text_2: autoDraw = True
+9.0730 	EXP 	text: autoDraw = False
+9.5518 	EXP 	text_2: autoDraw = False
+9.5571 	INFO 	Keyboard events cleared
+9.5570 	EXP 	image: autoDraw = True
+9.9639 	EXP 	signal_text: autoDraw = True
+11.4601 	EXP 	Device response: <KeyPress from None: t=11.455659458006267, value=space, duration=None>
+11.4634 	DATA 	Keypress: space
+11.4660 	INFO 	Keyboard events cleared
+11.4659 	EXP 	image: autoDraw = False
+11.4659 	EXP 	signal_text: autoDraw = False
+11.4659 	EXP 	text: autoDraw = False
+11.4659 	EXP 	text_2: autoDraw = False
+11.4659 	EXP 	continue_text: autoDraw = True
+11.5705 	EXP 	Device response: <KeyPress from None: t=11.455659458006267, value=space, duration=0.11173641600180417>
+12.4548 	EXP 	continue_text: autoDraw = False
+13.7183 	WARNING 	Multiple dropped frames have occurred - I'll stop bothering you about them!
+66.5839 	EXP 	Device response: <KeyPress from None: t=66.58201624901267, value=f, duration=None>
+66.5840 	EXP 	New trial (rep=0, index=2): <Trial 2 (2 in rep 0) data={'group_id': np.int64(22), 'item_id': np.int64(22), 'block': 'go-signal', 'item': 'basket', 'signal': 'basket', 'sem_relatedness': 'same', 'phon_relatedness': 'same', 'path': 'images/020 .bmp', 'image_file': '020 .bmp', 'thisN': 2, 'thisTrialN': 2, 'thisRepN': 0}>
+66.5916 	EXP 	continue_text: autoDraw = False
+66.5916 	EXP 	image: image = 'images/020 .bmp'
+66.5916 	EXP 	signal_text: height = np.float64(0.05)
+66.5916 	EXP 	signal_text: height = np.float64(0.05)
+66.5916 	EXP 	signal_text: height = np.float64(0.05)
+66.5916 	EXP 	signal_text: text = 'basket'
+66.5916 	EXP 	text: autoDraw = True
+66.6961 	EXP 	Device response: <KeyPress from None: t=66.58201624901267, value=f, duration=0.11205633397912607>
+67.0705 	EXP 	text_2: autoDraw = True
+67.0787 	EXP 	text: autoDraw = False
+67.5561 	EXP 	text_2: autoDraw = False
+67.5707 	INFO 	Keyboard events cleared
+67.5706 	EXP 	image: autoDraw = True
+67.9705 	EXP 	signal_text: autoDraw = True
+69.5560 	EXP 	image: autoDraw = False
+69.5560 	EXP 	signal_text: autoDraw = False
+69.5560 	EXP 	image: autoDraw = False
+69.5560 	EXP 	signal_text: autoDraw = False
+69.5560 	EXP 	text: autoDraw = False
+69.5560 	EXP 	text_2: autoDraw = False
+69.5702 	INFO 	Keyboard events cleared
+69.5702 	EXP 	continue_text: autoDraw = True
+70.3838 	EXP 	Device response: <KeyPress from None: t=70.3827109989943, value=f, duration=None>
+70.3839 	EXP 	New trial (rep=0, index=3): <Trial 3 (3 in rep 0) data={'group_id': np.int64(4), 'item_id': np.int64(4), 'block': 'go', 'item': 'apple', 'signal': None, 'sem_relatedness': 'none', 'phon_relatedness': 'none', 'path': 'images/006 .bmp', 'image_file': '006 .bmp', 'thisN': 3, 'thisTrialN': 3, 'thisRepN': 0}>
+70.3886 	EXP 	continue_text: autoDraw = False
+70.3886 	EXP 	image: image = 'images/006 .bmp'
+70.3886 	EXP 	signal_text: height = np.float64(0.05)
+70.3886 	EXP 	signal_text: height = np.float64(0.05)
+70.3886 	EXP 	signal_text: height = np.float64(0.05)
+70.3886 	EXP 	signal_text: text = 'basket'
+70.3886 	EXP 	text: autoDraw = True
+70.4770 	EXP 	Device response: <KeyPress from None: t=70.3827109989943, value=f, duration=0.09196433401666582>
+70.8700 	EXP 	text_2: autoDraw = True
+70.8749 	EXP 	text: autoDraw = False
+71.3561 	EXP 	text_2: autoDraw = False
+71.3701 	INFO 	Keyboard events cleared
+71.3701 	EXP 	image: autoDraw = True
+71.7704 	EXP 	signal_text: autoDraw = True
+73.3560 	EXP 	image: autoDraw = False
+73.3560 	EXP 	signal_text: autoDraw = False
+73.3560 	EXP 	image: autoDraw = False
+73.3560 	EXP 	signal_text: autoDraw = False
+73.3560 	EXP 	text: autoDraw = False
+73.3560 	EXP 	text_2: autoDraw = False
+73.3704 	INFO 	Keyboard events cleared
+73.3703 	EXP 	continue_text: autoDraw = True
+74.0838 	EXP 	Device response: <KeyPress from None: t=74.08158691599965, value=f, duration=None>
+74.0840 	EXP 	New trial (rep=0, index=4): <Trial 4 (4 in rep 0) data={'group_id': np.int64(12), 'item_id': np.int64(12), 'block': 'go', 'item': 'basket', 'signal': None, 'sem_relatedness': 'none', 'phon_relatedness': 'none', 'path': 'images/020 .bmp', 'image_file': '020 .bmp', 'thisN': 4, 'thisTrialN': 4, 'thisRepN': 0}>
+74.0887 	EXP 	continue_text: autoDraw = False
+74.0887 	EXP 	image: image = 'images/020 .bmp'
+74.0887 	EXP 	signal_text: height = np.float64(0.05)
+74.0887 	EXP 	signal_text: height = np.float64(0.05)
+74.0887 	EXP 	signal_text: height = np.float64(0.05)
+74.0887 	EXP 	signal_text: text = 'basket'
+74.0887 	EXP 	text: autoDraw = True
+74.2238 	EXP 	Device response: <KeyPress from None: t=74.08158691599965, value=f, duration=0.13609445799374953>
+74.5703 	EXP 	text_2: autoDraw = True
+74.5760 	EXP 	text: autoDraw = False
+75.0563 	EXP 	text_2: autoDraw = False
+75.0734 	INFO 	Keyboard events cleared
+75.0733 	EXP 	image: autoDraw = True
+75.4744 	EXP 	signal_text: autoDraw = True
+77.0582 	EXP 	image: autoDraw = False
+77.0619 	EXP 	signal_text: autoDraw = False
+77.0619 	EXP 	image: autoDraw = False
+77.0619 	EXP 	signal_text: autoDraw = False
+77.0619 	EXP 	text: autoDraw = False
+77.0619 	EXP 	text_2: autoDraw = False
+77.0701 	INFO 	Keyboard events cleared
+77.0700 	EXP 	continue_text: autoDraw = True
+77.4387 	EXP 	Device response: <KeyPress from None: t=77.43753908301005, value=f, duration=None>
+77.4389 	EXP 	New trial (rep=0, index=5): <Trial 5 (5 in rep 0) data={'group_id': np.int64(14), 'item_id': np.int64(14), 'block': 'go-signal', 'item': 'apple', 'signal': 'apple', 'sem_relatedness': 'same', 'phon_relatedness': 'same', 'path': 'images/006 .bmp', 'image_file': '006 .bmp', 'thisN': 5, 'thisTrialN': 5, 'thisRepN': 0}>
+77.4453 	EXP 	continue_text: autoDraw = False
+77.4453 	EXP 	image: image = 'images/006 .bmp'
+77.4453 	EXP 	signal_text: height = np.float64(0.05)
+77.4453 	EXP 	signal_text: height = np.float64(0.05)
+77.4453 	EXP 	signal_text: height = np.float64(0.05)
+77.4453 	EXP 	signal_text: text = 'apple'
+77.4453 	EXP 	text: autoDraw = True
+77.5719 	EXP 	Device response: <KeyPress from None: t=77.43753908301005, value=f, duration=0.13204541598679498>
+77.9287 	EXP 	text_2: autoDraw = True
+77.9313 	EXP 	text: autoDraw = False
+78.4151 	EXP 	text_2: autoDraw = False
+78.4261 	INFO 	Keyboard events cleared
+78.4260 	EXP 	image: autoDraw = True
+78.8249 	EXP 	signal_text: autoDraw = True
+79.3080 	EXP 	Device response: <KeyPress from None: t=79.30529791599838, value=f, duration=None>
+79.4160 	EXP 	Device response: <KeyPress from None: t=79.30529791599838, value=f, duration=0.1080118750105612>
+80.4117 	EXP 	image: autoDraw = False
+80.4117 	EXP 	signal_text: autoDraw = False
+80.4117 	EXP 	image: autoDraw = False
+80.4117 	EXP 	signal_text: autoDraw = False
+80.4117 	EXP 	text: autoDraw = False
+80.4117 	EXP 	text_2: autoDraw = False
+80.4283 	INFO 	Keyboard events cleared
+80.4283 	EXP 	continue_text: autoDraw = True
+80.7501 	EXP 	Device response: <KeyPress from None: t=80.74703179099015, value=f, duration=None>
+80.7503 	EXP 	New trial (rep=0, index=6): <Trial 6 (6 in rep 0) data={'group_id': np.int64(10), 'item_id': np.int64(10), 'block': 'go', 'item': 'basket', 'signal': None, 'sem_relatedness': 'none', 'phon_relatedness': 'none', 'path': 'images/020 .bmp', 'image_file': '020 .bmp', 'thisN': 6, 'thisTrialN': 6, 'thisRepN': 0}>
+80.7558 	EXP 	continue_text: autoDraw = False
+80.7558 	EXP 	image: image = 'images/020 .bmp'
+80.7558 	EXP 	signal_text: height = np.float64(0.05)
+80.7558 	EXP 	signal_text: height = np.float64(0.05)
+80.7558 	EXP 	signal_text: height = np.float64(0.05)
+80.7558 	EXP 	signal_text: text = 'apple'
+80.7558 	EXP 	text: autoDraw = True
+80.8581 	EXP 	Device response: <KeyPress from None: t=80.74703179099015, value=f, duration=0.10794225000427105>
+81.2366 	EXP 	text_2: autoDraw = True
+81.2416 	EXP 	text: autoDraw = False
+81.7227 	EXP 	text_2: autoDraw = False
+81.7366 	INFO 	Keyboard events cleared
+81.7366 	EXP 	image: autoDraw = True
+82.1373 	EXP 	signal_text: autoDraw = True
+83.7227 	EXP 	image: autoDraw = False
+83.7227 	EXP 	signal_text: autoDraw = False
+83.7227 	EXP 	image: autoDraw = False
+83.7227 	EXP 	signal_text: autoDraw = False
+83.7227 	EXP 	text: autoDraw = False
+83.7227 	EXP 	text_2: autoDraw = False
+83.7366 	INFO 	Keyboard events cleared
+83.7366 	EXP 	continue_text: autoDraw = True
+84.7228 	EXP 	continue_text: autoDraw = False
+87.4394 	EXP 	Device response: <KeyPress from None: t=87.43807937399833, value=f, duration=None>
+87.4395 	EXP 	New trial (rep=0, index=7): <Trial 7 (7 in rep 0) data={'group_id': np.int64(15), 'item_id': np.int64(15), 'block': 'go-signal', 'item': 'apple', 'signal': 'apple', 'sem_relatedness': 'same', 'phon_relatedness': 'same', 'path': 'images/006 .bmp', 'image_file': '006 .bmp', 'thisN': 7, 'thisTrialN': 7, 'thisRepN': 0}>
+87.4454 	EXP 	continue_text: autoDraw = False
+87.4454 	EXP 	image: image = 'images/006 .bmp'
+87.4454 	EXP 	signal_text: text = 'apple'
+87.4454 	EXP 	text: autoDraw = True
+87.5281 	EXP 	Device response: <KeyPress from None: t=87.43807937399833, value=f, duration=0.0872317920147907>
+87.9262 	EXP 	text_2: autoDraw = True
+87.9326 	EXP 	text: autoDraw = False
+88.4117 	EXP 	text_2: autoDraw = False
+88.4253 	INFO 	Keyboard events cleared
+88.4253 	EXP 	image: autoDraw = True
+88.8256 	EXP 	signal_text: autoDraw = True
+90.4257 	EXP 	image: autoDraw = False
+90.4257 	EXP 	signal_text: autoDraw = False
+90.4257 	EXP 	image: autoDraw = False
+90.4257 	EXP 	signal_text: autoDraw = False
+90.4257 	EXP 	text: autoDraw = False
+90.4257 	EXP 	text_2: autoDraw = False
+90.4325 	INFO 	Keyboard events cleared
+90.4324 	EXP 	continue_text: autoDraw = True
+91.2688 	EXP 	Device response: <KeyPress from None: t=91.26777658300125, value=escape, duration=None>
+91.3669 	EXP 	Device response: <KeyPress from None: t=91.26777658300125, value=escape, duration=0.09598254101001658>
+91.3669 	EXP 	untitled: status = STOPPED
+91.3703 	EXP 	continue_text: autoDraw = False
+91.3720 	EXP 	untitled: status = STOPPED
+91.3752 	INFO 	saved data to "/Users/thomasmorton/Allie'sExp/data/pilot_untitled_2025-11-21_10h52.27.740.csv"
+91.3759 	INFO 	saved data to /Users/thomasmorton/Allie'sExp/data/pilot_untitled_2025-11-21_10h52.27.740.psydat
+91.5105 	DEBUG 	Saving data for untitled ExperimentHandler
+91.5122 	WARNING 	Stopping key buffers but this could be dangerous ifother keyboards rely on the same.
+91.5123 	WARNING 	Stopping key buffers but this could be dangerous ifother keyboards rely on the same.
+91.5123 	WARNING 	Stopping key buffers but this could be dangerous ifother keyboards rely on the same.

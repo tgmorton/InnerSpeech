@@ -1,0 +1,17 @@
+# PVC for power analysis results
+# Uses CephFS for ReadWriteMany access (multiple pods writing concurrently)
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: power-analysis-results
+  namespace: lemn-lab
+  labels:
+    project: inner-speech-power-analysis
+    owner: thomas
+spec:
+  accessModes:
+    - ReadWriteMany  # Required for indexed jobs writing to same volume
+  resources:
+    requests:
+      storage: 5Gi   # CSV/RDS results are small, but leave room
+  storageClassName: rook-cephfs  # CephFS for shared access from multiple pods

@@ -1,0 +1,127 @@
+21.8353 	WARNING 	Font Manager failed to load file /System/Library/PrivateFrameworks/FontServices.framework/Resources/Reserved/PingFangUI.ttc
+21.9164 	WARNING 	Font Manager failed to load file /System/Library/PrivateFrameworks/FontServices.framework/Resources/Reserved/PingFangUI.ttc
+23.4502 	DEBUG 	Fullscreen settings ignored as running in pilot mode.
+23.4513 	INFO 	Loaded monitor calibration from ['2025_11_21 10:13']
+23.6225 	INFO 	Using renderer 'Apple M1 Max' for graphics
+23.6225 	INFO 	OpenGL version supported by driver is 2..
+23.6557 	EXP 	Created window1 = Window(allowGUI=False, allowStencil=False, autoLog=True, backendConf=UNKNOWN, backgroundFit=<method-wrapper '__getattribute__' of attributeSetter object at 0x1571017e0>, backgroundImage=<method-wrapper '__getattribute__' of attributeSetter object at 0x157101780>, bitsMode=UNKNOWN, blendMode='avg', bpc=(8, 8, 8), color=array([0., 0., 0.]), colorSpace='rgb', depthBits=8, fullscr=False, gamma=None, gammaErrorPolicy='raise', infoMsg=UNKNOWN, lms=UNKNOWN, monitor=<psychopy.monitors.calibTools.Monitor object at 0x157137850>, multiSample=False, name='window1', numSamples=2, pos=[np.float64(356.0), np.float64(191.0)], screen=0, size=array([1600, 1200]), stencilBits=0, stereo=False, title='PsychoPy', units='height', useFBO=True, useRetina=True, viewOri=0.0, viewPos=None, viewScale=None, waitBlanking=True, winType='pyglet')
+23.6558 	EXP 	window1: backgroundImage = ''
+23.6558 	EXP 	window1: backgroundFit = 'none'
+23.6793 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+23.6921 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+23.7049 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+23.7178 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+23.7307 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+23.7433 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+23.7560 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+23.7690 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+23.7812 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+23.7936 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+23.8063 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+23.8189 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+23.8315 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+23.8440 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+23.8566 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+23.8697 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+23.8831 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+23.8960 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+23.9086 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+23.9216 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+23.9340 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+23.9345 	DEBUG 	Uploading Texture Font fontname to graphics card
+23.9389 	DEBUG 	Upload of Texture Font fontname complete
+23.9583 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+23.9714 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+23.9843 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+23.9845 	DEBUG 	Uploading Texture Font fontname to graphics card
+23.9866 	DEBUG 	Upload of Texture Font fontname complete
+23.9881 	EXP 	window1: Attempting to measure frame rate of screen (0) ...
+23.9881 	EXP 	window1: recordFrameIntervals = False
+24.1444 	EXP 	window1: recordFrameIntervals = True
+24.5227 	DATA 	Keypress: space
+24.5269 	WARNING 	t of last frame was 35.57ms (=1/28)
+25.0124 	WARNING 	Couldn't measure a consistent frame rate!
+  - Is your graphics card set to sync to vertical blank?
+  - Are you running other processes on your computer?
+
+25.0378 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+25.0525 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+25.0662 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+25.0793 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+25.0922 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+25.1051 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+25.1177 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+25.1307 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+25.1437 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+25.1565 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+25.1568 	DEBUG 	Uploading Texture Font fontname to graphics card
+25.1592 	DEBUG 	Upload of Texture Font fontname complete
+25.7611 	INFO 	keyboard.Keyboard is using ptb backend.
+25.8381 	INFO 	keyboard.Keyboard is using ptb backend.
+25.8381 	EXP 	untitled: status = STARTED
+25.8617 	EXP 	Created image = ImageStim(__class__=<class 'psychopy.visual.image.ImageStim'>, anchor=('center', 'center'), autoLog=True, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=0.0, draggable=False, flipHoriz=np.False_, flipVert=np.False_, image='default.png', interpolate=True, mask=None, maskParams=None, name='image', opacity=1, ori=0.0, pos=array([0., 0.]), size=array([0.42666667, 0.42666667]), texRes=128.0, units='height', win=Window(...))
+25.8662 	EXP 	Created signal_text = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoDraw=False, autoLog=True, bold=False, color=array([ 1., -1., -1.]), colorSpace='rgb', contrast=1.0, depth=-1.0, draggable=False, flipHoriz=False, flipVert=False, font='Arial', fontFiles=[], height=0.05, italic=False, languageStyle='LTR', name='signal_text', opacity=1, ori=0.0, pos=array([0., 0.]), rgb=UNKNOWN, text='', units='height', win=Window(...), wrapWidth=1)
+25.8828 	EXP 	Created text = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoDraw=False, autoLog=True, bold=False, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=-2.0, draggable=False, flipHoriz=False, flipVert=False, font='Arial', fontFiles=[], height=np.float64(0.05), italic=False, languageStyle='LTR', name='text', opacity=1, ori=0.0, pos=array([0., 0.]), rgb=UNKNOWN, text='1', units='height', win=Window(...), wrapWidth=1)
+25.8848 	EXP 	Created text_2 = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoDraw=False, autoLog=True, bold=False, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=-3.0, draggable=False, flipHoriz=False, flipVert=False, font='Arial', fontFiles=[], height=np.float64(0.1), italic=False, languageStyle='LTR', name='text_2', opacity=1, ori=0.0, pos=array([0., 0.]), rgb=UNKNOWN, text='+', units='height', win=Window(...), wrapWidth=1)
+0.0114 	DEBUG 	Read csv file with pandas: AlliesItemList - Test.csv
+0.0123 	DEBUG 	Clearing unnamed columns from AlliesItemList - Test.csv
+0.0134 	EXP 	Imported AlliesItemList - Test.csv as conditions, 24 conditions, 9 params
+0.0139 	EXP 	New trial (rep=0, index=0): <Trial 0 (0 in rep 0) data={'group_id': np.int64(5), 'item_id': np.int64(5), 'block': 'go', 'item': 'apple', 'signal': None, 'sem_relatedness': 'none', 'phon_relatedness': 'none', 'path': 'images/006 .bmp', 'image_file': '006 .bmp', 'thisN': 0, 'thisTrialN': 0, 'thisRepN': 0}>
+0.0208 	EXP 	image: image = 'images/006 .bmp'
+0.0208 	EXP 	signal_text: height = np.float64(0.05)
+0.0208 	EXP 	signal_text: height = np.float64(0.05)
+0.0208 	EXP 	signal_text: height = np.float64(0.05)
+0.0208 	EXP 	signal_text: text = ''
+0.0208 	EXP 	text: autoDraw = True
+0.4942 	EXP 	text_2: autoDraw = True
+0.5096 	EXP 	text: autoDraw = False
+0.7919 	EXP 	Device response: <KeyPress from None: t=0.6264400829968508, value=space, duration=None>
+0.7981 	DATA 	Keypress: space
+0.8006 	WARNING 	t of last frame was 174.92ms (=1/5)
+0.8026 	EXP 	Device response: <KeyPress from None: t=0.6264400829968508, value=space, duration=0.09993462500278838>
+0.9846 	EXP 	text_2: autoDraw = False
+0.9975 	INFO 	Keyboard events cleared
+0.9974 	EXP 	image: autoDraw = True
+1.3975 	EXP 	signal_text: autoDraw = True
+1.4645 	WARNING 	t of last frame was 20.28ms (=1/49)
+2.9912 	EXP 	New trial (rep=0, index=1): <Trial 1 (1 in rep 0) data={'group_id': np.int64(19), 'item_id': np.int64(19), 'block': 'go-signal', 'item': 'basket', 'signal': 'basket', 'sem_relatedness': 'same', 'phon_relatedness': 'same', 'path': 'images/020 .bmp', 'image_file': '020 .bmp', 'thisN': 1, 'thisTrialN': 1, 'thisRepN': 0}>
+3.0008 	EXP 	image: autoDraw = False
+3.0008 	EXP 	signal_text: autoDraw = False
+3.0008 	EXP 	image: autoDraw = False
+3.0008 	EXP 	signal_text: autoDraw = False
+3.0008 	EXP 	text: autoDraw = False
+3.0008 	EXP 	text_2: autoDraw = False
+3.0008 	EXP 	image: image = 'images/020 .bmp'
+3.0008 	EXP 	signal_text: height = np.float64(0.05)
+3.0008 	EXP 	signal_text: height = np.float64(0.05)
+3.0008 	EXP 	signal_text: height = np.float64(0.05)
+3.0008 	EXP 	signal_text: text = 'basket'
+3.0008 	EXP 	text: autoDraw = True
+3.4975 	EXP 	text: autoDraw = False
+3.4975 	EXP 	text_2: autoDraw = True
+3.9859 	EXP 	text_2: autoDraw = False
+3.9940 	INFO 	Keyboard events cleared
+3.9939 	EXP 	image: autoDraw = True
+4.3931 	EXP 	signal_text: autoDraw = True
+5.9832 	EXP 	New trial (rep=0, index=2): <Trial 2 (2 in rep 0) data={'group_id': np.int64(21), 'item_id': np.int64(21), 'block': 'go-signal', 'item': 'basket', 'signal': 'basket', 'sem_relatedness': 'same', 'phon_relatedness': 'same', 'path': 'images/020 .bmp', 'image_file': '020 .bmp', 'thisN': 2, 'thisTrialN': 2, 'thisRepN': 0}>
+5.9864 	EXP 	image: autoDraw = False
+5.9864 	EXP 	signal_text: autoDraw = False
+5.9864 	EXP 	image: autoDraw = False
+5.9864 	EXP 	signal_text: autoDraw = False
+5.9864 	EXP 	text: autoDraw = False
+5.9864 	EXP 	text_2: autoDraw = False
+5.9864 	EXP 	image: image = 'images/020 .bmp'
+5.9864 	EXP 	signal_text: text = 'basket'
+5.9932 	EXP 	text: autoDraw = True
+6.2749 	EXP 	Device response: <KeyPress from None: t=6.272324916993966, value=escape, duration=None>
+6.2979 	DATA 	Keypress: escape
+6.2996 	WARNING 	t of last frame was 22.65ms (=1/44)
+6.3329 	EXP 	Device response: <KeyPress from None: t=6.272324916993966, value=escape, duration=0.059985541010973975>
+6.3330 	EXP 	untitled: status = STOPPED
+6.3345 	EXP 	text: autoDraw = False
+6.3360 	EXP 	untitled: status = STOPPED
+6.3377 	INFO 	saved data to "/Users/thomasmorton/Allie'sExp/data/pilot_untitled_2025-11-21_10h51.06.702.csv"
+6.3383 	INFO 	saved data to /Users/thomasmorton/Allie'sExp/data/pilot_untitled_2025-11-21_10h51.06.702.psydat
+6.4657 	DEBUG 	Saving data for untitled ExperimentHandler
+6.4688 	WARNING 	Stopping key buffers but this could be dangerous ifother keyboards rely on the same.
+6.4688 	WARNING 	Stopping key buffers but this could be dangerous ifother keyboards rely on the same.

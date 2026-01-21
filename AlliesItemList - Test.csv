@@ -1,0 +1,25 @@
+group_id,item_id,block,item,signal,sem_relatedness,phon_relatedness,path,image_file
+1,1,go,apple,none,none,none,images/006 .bmp,006 .bmp
+2,2,go,apple,none,none,none,images/006 .bmp,006 .bmp
+3,3,go,apple,none,none,none,images/006 .bmp,006 .bmp
+4,4,go,apple,none,none,none,images/006 .bmp,006 .bmp
+5,5,go,apple,none,none,none,images/006 .bmp,006 .bmp
+6,6,go,apple,none,none,none,images/006 .bmp,006 .bmp
+7,7,go,basket,none,none,none,images/020 .bmp,020 .bmp
+8,8,go,basket,none,none,none,images/020 .bmp,020 .bmp
+9,9,go,basket,none,none,none,images/020 .bmp,020 .bmp
+10,10,go,basket,none,none,none,images/020 .bmp,020 .bmp
+11,11,go,basket,none,none,none,images/020 .bmp,020 .bmp
+12,12,go,basket,none,none,none,images/020 .bmp,020 .bmp
+13,13,go-signal,apple,apple,same,same,images/006 .bmp,006 .bmp
+14,14,go-signal,apple,apple,same,same,images/006 .bmp,006 .bmp
+15,15,go-signal,apple,apple,same,same,images/006 .bmp,006 .bmp
+16,16,go-signal,apple,apple,same,same,images/006 .bmp,006 .bmp
+17,17,go-signal,apple,apple,same,same,images/006 .bmp,006 .bmp
+18,18,go-signal,apple,apple,same,same,images/006 .bmp,006 .bmp
+19,19,go-signal,basket,basket,same,same,images/020 .bmp,020 .bmp
+20,20,go-signal,basket,basket,same,same,images/020 .bmp,020 .bmp
+21,21,go-signal,basket,basket,same,same,images/020 .bmp,020 .bmp
+22,22,go-signal,basket,basket,same,same,images/020 .bmp,020 .bmp
+23,23,go-signal,basket,basket,same,same,images/020 .bmp,020 .bmp
+24,24,go-signal,basket,basket,same,same,images/020 .bmp,020 .bmp

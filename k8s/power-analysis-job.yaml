@@ -1,0 +1,139 @@
+# =============================================================================
+# Power Analysis Indexed Job for Inner Speech Study
+# Runs 1000 simulations per condition (6 sample sizes x 2 analysis types = 12 jobs)
+#
+# Index mapping:
+#   0-5:  2x2 analysis for N = 30, 48, 60, 72, 84, 96
+#   6-11: Valence analysis for N = 30, 48, 60, 72, 84, 96
+#
+# Prerequisites:
+#   kubectl apply -f power-analysis-pvc.yaml
+#   kubectl apply -f power-analysis-configmap.yaml
+#
+# Usage:
+#   kubectl apply -f power-analysis-job.yaml
+#   kubectl get jobs -l project=inner-speech-power-analysis
+#   kubectl logs -f job/power-analysis --all-containers
+#
+# =============================================================================
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: power-analysis
+  namespace: lemn-lab
+  labels:
+    project: inner-speech-power-analysis
+    owner: thomas
+spec:
+  completionMode: Indexed
+  completions: 12         # 6 sample sizes x 2 analyses
+  parallelism: 4          # Run 4 at a time to be a good citizen
+
+  # Keep completed job for 7 days for log inspection
+  ttlSecondsAfterFinished: 604800
+
+  # Retry failed pods up to 6 times
+  backoffLimit: 6
+
+  # Safety timeout: 48 hours (2x2 jobs take ~6-8 hours each)
+  activeDeadlineSeconds: 172800
+
+  template:
+    metadata:
+      labels:
+        project: inner-speech-power-analysis
+        owner: thomas
+    spec:
+      # Don't restart on same (potentially bad) node
+      restartPolicy: Never
+
+      # Avoid GPU nodes - this is CPU-only work
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: feature.node.kubernetes.io/pci-10de.present
+                operator: NotIn
+                values:
+                - "true"
+          # Prefer US West for CephFS performance
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - weight: 100
+            preference:
+              matchExpressions:
+              - key: topology.kubernetes.io/region
+                operator: In
+                values:
+                - us-west
+
+      containers:
+      - name: r-simulation
+        image: rocker/tidyverse:4.4.1
+        imagePullPolicy: IfNotPresent
+
+        env:
+        - name: N_SIMS
+          value: "1000"
+        - name: OUTPUT_DIR
+          value: "/results"
+        - name: N_CORES
+          value: "8"
+
+        command: ["/bin/bash", "-c"]
+        args:
+        - |
+          set -e
+
+          echo "========================================"
+          echo "Inner Speech Power Analysis"
+          echo "Job Index: $JOB_COMPLETION_INDEX"
+          echo "N Simulations: $N_SIMS"
+          echo "========================================"
+          echo "Date: $(date)"
+          echo "Hostname: $(hostname)"
+          echo ""
+
+          # Install system dependencies for nloptr (required by lme4)
+          echo "Installing system dependencies..."
+          apt-get update -qq && apt-get install -y -qq cmake > /dev/null 2>&1
+          echo "System dependencies installed."
+
+          # Install lme4 and lmerTest (not in base tidyverse image)
+          echo "Installing R packages..."
+          Rscript -e 'install.packages(c("lme4", "lmerTest"), repos="https://cloud.r-project.org", quiet=TRUE, Ncpus=2)'
+          echo "Packages installed successfully."
+          echo ""
+
+          # Run the worker script from ConfigMap
+          echo "Starting simulation..."
+          Rscript /scripts/worker.R
+
+          echo ""
+          echo "========================================"
+          echo "Job $JOB_COMPLETION_INDEX complete!"
+          echo "========================================"
+
+        resources:
+          requests:
+            cpu: "8"
+            memory: "2Gi"
+          limits:
+            cpu: "8"
+            memory: "2Gi"
+
+        volumeMounts:
+        - name: results
+          mountPath: /results
+        - name: scripts
+          mountPath: /scripts
+          readOnly: true
+
+      volumes:
+      - name: results
+        persistentVolumeClaim:
+          claimName: power-analysis-results
+      - name: scripts
+        configMap:
+          name: power-analysis-scripts
+          defaultMode: 0755

@@ -1,0 +1,107 @@
+# =============================================================================
+# Aggregation Job for Power Analysis Results
+# Run this AFTER all 12 simulation jobs complete to combine results
+#
+# Prerequisites:
+#   - power-analysis job must be completed (all 12 pods)
+#   - Check with: kubectl get job power-analysis
+#
+# Usage:
+#   kubectl apply -f power-analysis-aggregate.yaml
+#   kubectl logs -f job/power-analysis-aggregate
+#
+# =============================================================================
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: power-analysis-aggregate
+  namespace: lemn-lab
+  labels:
+    project: inner-speech-power-analysis
+    owner: thomas
+spec:
+  ttlSecondsAfterFinished: 604800  # Keep for 7 days
+  backoffLimit: 2
+
+  template:
+    metadata:
+      labels:
+        project: inner-speech-power-analysis
+        owner: thomas
+    spec:
+      restartPolicy: Never
+
+      # Use opportunistic priority
+      priorityClassName: opportunistic
+
+      # Avoid GPU nodes
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: feature.node.kubernetes.io/pci-10de.present
+                operator: NotIn
+                values:
+                - "true"
+
+      containers:
+      - name: r-aggregate
+        image: rocker/tidyverse:4.4.1
+        imagePullPolicy: IfNotPresent
+
+        command: ["/bin/bash", "-c"]
+        args:
+        - |
+          set -e
+
+          echo "========================================"
+          echo "Power Analysis Results Aggregation"
+          echo "========================================"
+          echo "Date: $(date)"
+          echo ""
+
+          # List available result files
+          echo "Checking results directory..."
+          ls -la /results/
+
+          echo ""
+          echo "CSV files found:"
+          ls -la /results/*.csv 2>/dev/null || echo "  (none)"
+
+          echo ""
+          echo "RDS files found:"
+          ls -la /results/*.rds 2>/dev/null || echo "  (none)"
+
+          echo ""
+          echo "Running aggregation script..."
+          Rscript /scripts/aggregate.R /results
+
+          echo ""
+          echo "========================================"
+          echo "Aggregation complete!"
+          echo "========================================"
+
+        resources:
+          requests:
+            cpu: "500m"
+            memory: "1Gi"
+          limits:
+            cpu: "1"
+            memory: "2Gi"
+
+        volumeMounts:
+        - name: results
+          mountPath: /results
+        - name: scripts
+          mountPath: /scripts
+          readOnly: true
+
+      volumes:
+      - name: results
+        persistentVolumeClaim:
+          claimName: power-analysis-results
+      - name: scripts
+        configMap:
+          name: power-analysis-scripts
+          defaultMode: 0755

@@ -1,0 +1,36 @@
+20.6633 	WARNING 	Font Manager failed to load file /System/Library/PrivateFrameworks/FontServices.framework/Resources/Reserved/PingFangUI.ttc
+20.7345 	WARNING 	Font Manager failed to load file /System/Library/PrivateFrameworks/FontServices.framework/Resources/Reserved/PingFangUI.ttc
+22.6238 	INFO 	Loaded monitor calibration from ['2025_11_21 10:13']
+22.8245 	INFO 	Using renderer 'Apple M1 Max' for graphics
+22.8245 	INFO 	OpenGL version supported by driver is 2..
+22.8579 	EXP 	Created window1 = Window(allowGUI=False, allowStencil=False, autoLog=True, backendConf=UNKNOWN, backgroundFit=<method-wrapper '__getattribute__' of attributeSetter object at 0x157c85930>, backgroundImage=<method-wrapper '__getattribute__' of attributeSetter object at 0x157c858d0>, bitsMode=UNKNOWN, blendMode='avg', bpc=(8, 8, 8), color=array([0., 0., 0.]), colorSpace='rgb', depthBits=8, fullscr=True, gamma=None, gammaErrorPolicy='raise', infoMsg=UNKNOWN, lms=UNKNOWN, monitor=<psychopy.monitors.calibTools.Monitor object at 0x157cd83d0>, multiSample=False, name='window1', numSamples=2, pos=[np.float64(0.0), np.float64(0.0)], screen=0, size=array([3024, 1964]), stencilBits=0, stereo=False, title='PsychoPy', units='height', useFBO=True, useRetina=True, viewOri=0.0, viewPos=None, viewScale=None, waitBlanking=True, winType='pyglet')
+22.8580 	EXP 	window1: backgroundImage = ''
+22.8580 	EXP 	window1: backgroundFit = 'none'
+23.2024 	EXP 	window1: Attempting to measure frame rate of screen (0) ...
+23.2024 	EXP 	window1: recordFrameIntervals = False
+23.4100 	EXP 	window1: recordFrameIntervals = True
+24.2432 	WARNING 	Couldn't measure a consistent frame rate!
+  - Is your graphics card set to sync to vertical blank?
+  - Are you running other processes on your computer?
+
+24.7809 	INFO 	keyboard.Keyboard is using ptb backend.
+24.8577 	INFO 	keyboard.Keyboard is using ptb backend.
+24.9344 	INFO 	keyboard.Keyboard is using ptb backend.
+24.9345 	EXP 	untitled: status = STARTED
+24.9646 	EXP 	Created continue_text = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoDraw=False, autoLog=True, bold=False, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=-1.0, draggable=False, flipHoriz=False, flipVert=False, font='Arial', fontFiles=[], height=np.float64(0.05), italic=False, languageStyle='LTR', name='continue_text', opacity=1, ori=0.0, pos=array([0., 0.]), rgb=UNKNOWN, text="Press 'f' to continue", units='height', win=Window(...), wrapWidth=1)
+24.9840 	EXP 	Created image = ImageStim(__class__=<class 'psychopy.visual.image.ImageStim'>, anchor=('center', 'center'), autoLog=True, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=0.0, draggable=False, flipHoriz=np.False_, flipVert=np.False_, image='default.png', interpolate=True, mask=None, maskParams=None, name='image', opacity=1, ori=0.0, pos=array([0., 0.]), size=array([0.26069246, 0.26069246]), texRes=128.0, units='height', win=Window(...))
+24.9844 	EXP 	Created signal_text = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoDraw=False, autoLog=True, bold=False, color=array([ 1., -1., -1.]), colorSpace='rgb', contrast=1.0, depth=-1.0, draggable=False, flipHoriz=False, flipVert=False, font='Arial', fontFiles=[], height=0.05, italic=False, languageStyle='LTR', name='signal_text', opacity=1, ori=0.0, pos=array([0., 0.]), rgb=UNKNOWN, text='', units='height', win=Window(...), wrapWidth=1)
+24.9864 	EXP 	Created text = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoDraw=False, autoLog=True, bold=False, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=-2.0, draggable=False, flipHoriz=False, flipVert=False, font='Arial', fontFiles=[], height=np.float64(0.05), italic=False, languageStyle='LTR', name='text', opacity=1, ori=0.0, pos=array([0., 0.]), rgb=UNKNOWN, text='1', units='height', win=Window(...), wrapWidth=1)
+24.9883 	EXP 	Created text_2 = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoDraw=False, autoLog=True, bold=False, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=-3.0, draggable=False, flipHoriz=False, flipVert=False, font='Arial', fontFiles=[], height=np.float64(0.1), italic=False, languageStyle='LTR', name='text_2', opacity=1, ori=0.0, pos=array([0., 0.]), rgb=UNKNOWN, text='+', units='height', win=Window(...), wrapWidth=1)
+24.9900 	EXP 	Created continue_text = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoDraw=False, autoLog=True, bold=False, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=-1.0, draggable=False, flipHoriz=False, flipVert=False, font='Arial', fontFiles=[], height=np.float64(0.05), italic=False, languageStyle='LTR', name='continue_text', opacity=1, ori=0.0, pos=array([0., 0.]), rgb=UNKNOWN, text="Press 'f' to continue", units='height', win=Window(...), wrapWidth=1)
+0.0082 	INFO 	Keyboard events cleared
+0.0081 	EXP 	continue_text: autoDraw = True
+1.4218 	EXP 	Device response: <KeyPress from None: t=1.2192542489792686, value=f, duration=None>
+1.4221 	EXP 	Device response: <KeyPress from None: t=1.2192542489792686, value=f, duration=0.09589854200021364>
+1.4272 	EXP 	Imported AlliesItemList - Test.csv as conditions, 24 conditions, 9 params
+1.4277 	EXP 	New trial (rep=0, index=0): <Trial 0 (0 in rep 0) data={'group_id': np.int64(19), 'item_id': np.int64(19), 'block': 'go-signal', 'item': 'basket', 'signal': 'basket', 'sem_relatedness': 'same', 'phon_relatedness': 'same', 'path': 'images/020 .bmp', 'image_file': '020 .bmp', 'thisN': 0, 'thisTrialN': 0, 'thisRepN': 0}>
+1.4508 	INFO 	saved data to /Users/thomasmorton/Allie'sExp/data/386336_untitled_2025-11-21_10h56.31.989.psydat
+1.4511 	INFO 	saved data to "/Users/thomasmorton/Allie'sExp/data/386336_untitled_2025-11-21_10h56.31.989.csv"
+1.4577 	WARNING 	Stopping key buffers but this could be dangerous ifother keyboards rely on the same.
+1.4578 	WARNING 	Stopping key buffers but this could be dangerous ifother keyboards rely on the same.
+1.4578 	WARNING 	Stopping key buffers but this could be dangerous ifother keyboards rely on the same.
