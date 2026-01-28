@@ -100,11 +100,15 @@ class StopSignalTrialPlugin {
     // Trial state
     let response = {
       rt: null,
-      responded: false
+      responded: false,
+      key_pressed: null
     };
 
     let trialEnded = false;
     const startTime = performance.now();
+    const trialStartTimestamp = new Date().toISOString();
+    let wordOnsetTime = null;
+    let maskOnsetTime = null;
     let soaTimeout = null;
     let maskTimeout = null;
     let endTimeout = null;
@@ -119,6 +123,7 @@ class StopSignalTrialPlugin {
       if (!response.responded) {
         response.rt = Math.round(performance.now() - startTime);
         response.responded = true;
+        response.key_pressed = e.key;
         endTrial();
       }
     };
@@ -130,12 +135,14 @@ class StopSignalTrialPlugin {
     if (trial.trial_type === "go_signal" || trial.trial_type === "stop_signal") {
       soaTimeout = this.jsPsych.pluginAPI.setTimeout(() => {
         if (trialEnded) return;
+        wordOnsetTime = Math.round(performance.now() - startTime);
         wordOverlay.textContent = trial.signal_word;
         wordOverlay.classList.add("visible");
 
         // Schedule mask after word duration
         maskTimeout = this.jsPsych.pluginAPI.setTimeout(() => {
           if (trialEnded) return;
+          maskOnsetTime = Math.round(performance.now() - startTime);
           wordOverlay.textContent = trial.mask;
         }, trial.word_duration);
       }, trial.soa);
@@ -158,16 +165,29 @@ class StopSignalTrialPlugin {
       // Remove keyboard listener
       document.removeEventListener("keydown", handleKeypress);
 
+      // Calculate actual trial duration
+      const trialEndTime = Math.round(performance.now() - startTime);
+
       // Collect data
       const trialData = {
         picture: trial.picture_name,
-        trial_type: trial.trial_type,
+        stimulus_type: trial.trial_type,
         signal_word: trial.signal_word,
         signal_condition: trial.signal_condition,
         rt: response.rt,
         responded: response.responded,
+        key_pressed: response.key_pressed,
         block: trial.block,
-        phase: trial.phase
+        phase: trial.phase,
+        // Timing data
+        trial_start_timestamp: trialStartTimestamp,
+        target_soa: trial.soa,
+        target_word_duration: trial.word_duration,
+        actual_word_onset: wordOnsetTime,
+        actual_mask_onset: maskOnsetTime,
+        actual_word_duration: (maskOnsetTime && wordOnsetTime) ? maskOnsetTime - wordOnsetTime : null,
+        actual_trial_duration: trialEndTime,
+        max_trial_duration: trial.trial_duration
       };
 
       // Clear display

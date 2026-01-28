@@ -11,7 +11,13 @@ The Role of Physical Articulation in Inner Speech Monitoring
 
 ## Description
 
-Speakers monitor their speech for errors before and during articulation, but the role of physical articulation in this monitoring process remains unclear. Slevc and Ferreira (2006) demonstrated that during overt speech production, speakers are sensitive to phonological—but not semantic—conflict when halting speech, suggesting that pre-articulatory monitoring prioritizes sound-level information. However, inner speech can occur without engaging the articulatory system, raising the question of whether phonological monitoring depends on articulatory engagement. The present study addresses this question by adapting Slevc and Ferreira's stop-signal picture naming paradigm for unmouthed inner speech. Participants silently name pictures and press a button to indicate speech onset, withholding their response when a non-matching distractor word appears. Distractor words vary in their phonological and semantic relatedness to the picture name (2×2 design), as well as their emotional valence (validation manipulation). If phonological monitoring persists without articulation, we expect to replicate the original phonological interference effect. Alternatively, if articulatory disengagement frees monitoring resources, semantic interference may emerge. A third possibility is that both forms of monitoring are attenuated when articulation is absent. The emotional valence manipulation provides a task validation check: replicating the valence effect from overt speech would confirm that button-press responses capture the same interference dynamics. Results will clarify how articulatory involvement shapes pre-speech monitoring and inform theories of inner speech and speech production.
+Speakers monitor their speech for errors before and during articulation, but the role of physical articulation in this monitoring process remains unclear. Slevc and Ferreira (2006) demonstrated that during overt speech production, speakers are sensitive to phonological—but not semantic—conflict when halting speech, suggesting that pre-articulatory monitoring prioritizes sound-level information. However, inner speech can occur without engaging the articulatory system, raising the question of whether phonological monitoring depends on articulatory engagement.
+
+We adopt Nozari, Dell, and Schwartz's (2011) conflict-based account of speech monitoring, which treats error detection as arising from conflict at selection points within production, relayed to a domain-general control system. On this view, monitoring bandwidth is limited and deployable: when conflict is reduced at one locus, the central monitor should have capacity to allocate to other loci. In production terms, lowering articulatory/phonological conflict should free capacity to monitor upstream semantic selection.
+
+The present study tests this account by adapting Slevc and Ferreira's stop-signal picture naming paradigm for unmouthed inner speech. Participants silently name pictures and press a button to indicate speech onset, withholding their response when a non-matching distractor word appears. Distractor words vary in their phonological and semantic relatedness to the picture name (2×2 design), as well as their emotional valence (validation manipulation).
+
+If phonological monitoring persists without articulation, we expect to replicate the original phonological interference effect. Alternatively, if articulatory disengagement frees monitoring resources, semantic interference may emerge—a prediction derived from the conflict-based account. A third possibility is that both forms of monitoring are attenuated when articulation is absent. The emotional valence manipulation provides a task validation check: replicating the valence effect from overt speech would confirm that button-press responses capture the same interference dynamics. Results will clarify how articulatory involvement shapes pre-speech monitoring and inform theories of inner speech and speech production.
 
 ## Contributors
 - Thomas Morton – UCSD Psychology
@@ -88,7 +94,7 @@ A 25% percentage of stop-signal trials ensures that participants are not anticip
 
 ## Randomization
 
-Trials are pseudorandomized such that more than 2 stop-signal trials never occur adjacent to each other. Participants are given three breaks, equally spaced.
+Trials are pseudorandomized such that more than 2 stop-signal trials ever occur adjacent to each other. Participants are given three breaks, equally spaced.
 
 ## Existing Data
 
@@ -100,7 +106,7 @@ Not applicable.
 
 ## Data Collection Procedures
 
-Participants will consist of university students from the University of California, San Diego. Participants must have normal to corrected-to-normal vision and be native speakers of English. Participants will be provided with SONA credit for their participation, which can be applied for class credit.
+Participants will consist of university students from the University of California, San Diego. Participants must have normal to corrected-to-normal vision and be native speakers of English. Participants will be provided with SONA credit for their participation, which can be applied for class credit. Following the experimental task, participants will complete the Internal Representations Questionnaire (IRQ; Roebuck & Lupyan, 2020), a 36-item measure assessing individual differences in modes of thinking across four factors: Internal Verbalization, Visual Imagery, Orthographic Imagery, and Representational Manipulation.
 
 ## Sample Size
 
@@ -133,13 +139,15 @@ N/A
 
 Presence of Button Press and Button Press Reaction times are combined using the stop-signal race model into the derived measure of **stop-signal reaction time (SSRT)**.
 
+TODO
+
 ## Statistical Models
 
 We will use linear mixed-effects models with maximal random effects structure (Barr et al., 2013).
 
 **2×2 Phonological × Semantic Relatedness:**
 ```
-halt ~ phon * sem + (1 + phon + sem | subject) + (1 + phon + sem | item)
+halt ~ phon + sem + phon:sem + (1 + phon + sem | subject) + (1 + phon + sem | item)
 ```
 
 **Emotional Valence:**
@@ -174,4 +182,4 @@ N/A
 
 ## Other
 
-This study is a conceptual replication and extension of Slevc and Ferreira (2006). The stop-signal paradigm follows Band et al. (2003) and Matzke et al. (2018). Picture stimuli are from Snodgrass and Vanderwart (1980) as adapted by Rossion and Pourtois (2004). The button-press methodology for inner speech draws from Dell (1978), who demonstrated equivalent error rates between overt and covert speech using this approach. The distinction between mouthed and unmouthed inner speech follows from Oppenheim and Dell (2010), who showed that articulatory engagement selectively affects phonological processing.
+This study is a conceptual replication and extension of Slevc and Ferreira (2006). The stop-signal paradigm follows Band et al. (2003) and Matzke et al. (2018). Picture stimuli are from Snodgrass and Vanderwart (1980) as adapted by Rossion and Pourtois (2004). The button-press methodology for inner speech draws from Dell (1978), who demonstrated equivalent error rates between overt and covert speech using this approach. The distinction between mouthed and unmouthed inner speech follows from Oppenheim and Dell (2010), who showed that articulatory engagement selectively affects phonological processing. Individual differences in internal verbalization and visual imagery are assessed using the Internal Representations Questionnaire (Roebuck & Lupyan, 2020).

@@ -11,11 +11,15 @@
     "@jspsych/plugin-html-button-response": "^2.1.0",
     "@jspsych/plugin-html-keyboard-response": "^1.1.2",
     "@jspsych/plugin-image-keyboard-response": "^2.1.0",
+    "@jspsych/plugin-instructions": "^2.1.0",
     "@jspsych/plugin-preload": "^1.1.2",
+    "@jspsych/plugin-survey-likert": "^2.1.0",
+    "@jspsych/plugin-survey-text": "^2.1.0",
     "jspsych": "^7.3.1"
   },
   "devDependencies": {
-    "jspsych-builder": "^4.4.0"
+    "jspsych-builder": "^4.4.0",
+    "sass": "1.77.8"
   },
   "browserslist": ">0.25%, not dead"
 }

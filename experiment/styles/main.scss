@@ -180,6 +180,52 @@
     color: #666;
     font-style: italic;
   }
+
+  // Horizontal rules as simple section dividers
+  hr {
+    border: none;
+    border-top: 2px solid #333;
+    margin: 25px 0;
+  }
+}
+
+// Detailed instruction page with visual examples
+.instructions-detailed {
+  .instruction-example {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+  }
+
+  .example-picture-container {
+    position: relative;
+    display: inline-block;
+
+    .example-image {
+      max-height: 180px;
+      width: auto;
+      display: block;
+    }
+
+    .example-word-overlay {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 1.8em;
+      font-weight: bold;
+      text-transform: uppercase;
+      color: #cc0000;
+      white-space: nowrap;
+      text-shadow:
+        -2px -2px 0 #fff,
+        2px -2px 0 #fff,
+        -2px 2px 0 #fff,
+        2px 2px 0 #fff,
+        0 0 4px #fff;
+    }
+  }
 }
 
 // Fullscreen prompt
@@ -283,8 +329,9 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 400px;
+  min-height: 300px;
   text-align: center;
+  padding: 40px;
 
   .correct-answer {
     font-size: 1.8em;
@@ -301,24 +348,45 @@
   .feedback-question {
     font-size: 1.3em;
     color: #333;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
   }
 
   .feedback-keys {
     font-size: 1.1em;
     color: #666;
+  }
+}
 
-    .key {
-      display: inline-block;
-      background-color: #f0f0f0;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      padding: 5px 12px;
-      margin: 0 5px;
-      font-family: monospace;
-      font-weight: bold;
+// Button response styling (instructions, consent, etc.)
+.jspsych-html-button-response-button {
+  margin: 0 10px;
+  display: inline-block;
+
+  button {
+    font-size: 1.1em;
+    padding: 12px 35px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.2s;
+
+    &:hover {
+      background-color: #0056b3;
     }
   }
+}
+
+#jspsych-html-button-response-btngroup {
+  margin-top: 20px;
+}
+
+// Instructions plugin nav buttons
+.jspsych-instructions-nav {
+  margin-top: 30px;
+  text-align: center;
 }
 
 // Trial number display
@@ -327,6 +395,24 @@
   color: #888;
   text-align: center;
   padding: 30px;
+
+  .overall-progress {
+    display: block;
+    font-size: 0.75em;
+    color: #aaa;
+    margin-top: 5px;
+  }
+}
+
+// Progress summary on break screens
+.progress-summary {
+  background-color: #f0f7ff;
+  border: 1px solid #c0d8f0;
+  border-radius: 8px;
+  padding: 15px 25px;
+  margin: 20px auto;
+  display: inline-block;
+  font-size: 1.1em;
 }
 
 // Fixation cross
@@ -359,7 +445,7 @@
     width: auto;
   }
 
-  // Word overlay - RED TEXT with BLACK BORDER
+  // Word overlay - RED TEXT over image (no background)
   .word-overlay {
     position: absolute;
     top: 50%;
@@ -370,14 +456,16 @@
     font-weight: bold;
     text-transform: uppercase;
     color: #cc0000;
-    background-color: #fff;
-    padding: 12px 24px;
-    border: 3px solid #000;
-    border-radius: 4px;
     white-space: nowrap;
     visibility: hidden;
     z-index: 10;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    // Text shadow for readability over images
+    text-shadow:
+      -2px -2px 0 #fff,
+      2px -2px 0 #fff,
+      -2px 2px 0 #fff,
+      2px 2px 0 #fff,
+      0 0 4px #fff;
 
     &.visible {
       visibility: visible;
@@ -425,4 +513,80 @@
   color: #888;
   text-align: center;
   margin-bottom: 20px;
+}
+
+// Survey/Questionnaire styles
+.jspsych-survey-likert {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+
+  h3 {
+    font-size: 1.6em;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: #1a1a1a;
+    text-align: center;
+  }
+
+  p {
+    font-size: 1.1em;
+    margin-bottom: 25px;
+    color: #333;
+    text-align: center;
+  }
+}
+
+.jspsych-survey-likert-statement {
+  font-size: 1.1em;
+  color: #333;
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+.jspsych-survey-likert-opts {
+  margin-bottom: 30px;
+  padding: 15px 0;
+  border-bottom: 1px solid #eee;
+
+  label {
+    font-size: 0.9em;
+    color: #666;
+    cursor: pointer;
+
+    input[type="radio"] {
+      cursor: pointer;
+      transform: scale(1.2);
+      margin-bottom: 5px;
+    }
+
+    &:hover {
+      color: #007bff;
+    }
+  }
+}
+
+.jspsych-survey-likert-opt-label {
+  font-size: 0.85em;
+  color: #666;
+  padding-top: 5px;
+}
+
+// Survey button styling
+form input[type="submit"],
+.jspsych-survey-likert button {
+  font-size: 1.1em;
+  padding: 14px 35px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 25px;
+  font-weight: 500;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: #0056b3;
+  }
 }
