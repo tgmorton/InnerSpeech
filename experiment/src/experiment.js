@@ -106,6 +106,21 @@ export async function run({ assetPaths, input = {}, environment, title, version 
   });
 
   // ========================================
+  // PHASE 2b: Participant Information
+  // ========================================
+  timeline.push({
+    type: SurveyTextPlugin,
+    preamble: "<h3>Participant Information</h3><p>Please provide the following information.</p>",
+    questions: [
+      { prompt: "Name:", name: "participant_name", required: true },
+      { prompt: "Email:", name: "participant_email", required: true },
+      { prompt: "Native Language:", name: "native_language", required: true }
+    ],
+    button_label: "Continue",
+    data: { task: "participant_info" }
+  });
+
+  // ========================================
   // PHASE 3: Welcome Screen
   // ========================================
   timeline.push({
